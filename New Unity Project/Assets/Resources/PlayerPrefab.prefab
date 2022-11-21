@@ -349,6 +349,7 @@ MonoBehaviour:
   hitEffectPrefab: {fileID: 7449563037389211358, guid: 4ab3674f03255db41a23103e18612d33, type: 3}
   startHealth: 100
   healthBar: {fileID: 5255754371886901536}
+  deathLog: {fileID: 0}
 --- !u!1 &282407167392786668
 GameObject:
   m_ObjectHideFlags: 0
