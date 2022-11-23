@@ -147,7 +147,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7818}
     - Class: 114
-      Script: {instanceID: 31382}
+      Script: {instanceID: 30392}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -708,7 +708,7 @@ ScriptsOnlyBuild:
     className: CountdownTimer
   - hash:
       serializedVersion: 2
-      Hash: 8d87f23e4fb9b8fa2c39b22ea50002cb
+      Hash: 494daedef1bcddbbc28cdaf9ffe4e77a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Shooting
@@ -2552,4 +2552,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/LobbyScene.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: D:/home brew gamesz/FPS mobile/FPS mobile build2.2.0.apk
+  playerPath: D:/home brew gamesz/FPS mobile/FPS mobile build2.2.3.apk

@@ -25,7 +25,7 @@ public class Shooting : MonoBehaviourPunCallbacks
     private int score = 0;
    
     bool dead = false;
-    public GameObject deathLog;
+    public Text deathLog;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +33,7 @@ public class Shooting : MonoBehaviourPunCallbacks
         health = startHealth;
         healthBar.fillAmount = health / startHealth;
         animator = this.GetComponent<Animator>();
+        deathLog = GameObject.Find("Death Log").GetComponent<Text>();
         
     }
 
@@ -40,7 +41,6 @@ public class Shooting : MonoBehaviourPunCallbacks
     void Update()
     {
         
-        DisplayDead();
     }
 
     public void Fire()
@@ -76,9 +76,9 @@ public class Shooting : MonoBehaviourPunCallbacks
             shooter = info.Sender.NickName;
             deadP = info.photonView.Owner.NickName;
             
-            Debug.Log(shooter + " killed" + deadP);
+            
             dead = true;
-            DisplayDead();
+            photonView.RPC("DisplayDead", RpcTarget.AllBuffered);
         }
 
         if (photonView.IsMine && dead == true)
@@ -143,10 +143,10 @@ public class Shooting : MonoBehaviourPunCallbacks
         healthBar.fillAmount = health / startHealth;
     }
 
-
     [PunRPC]
     public void DisplayDead()
     {
-        deathLog.GetComponent<Text>().text = shooter + " killed" + deadP;
+        Debug.Log(shooter + " killed" + deadP);
+        deathLog.GetComponent<Text>().text = shooter + " killed " + deadP;
     }
 }
