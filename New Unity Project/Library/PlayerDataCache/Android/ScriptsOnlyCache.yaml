@@ -147,7 +147,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7818}
     - Class: 114
-      Script: {instanceID: 30392}
+      Script: {instanceID: 31382}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -2552,4 +2552,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/LobbyScene.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: D:/home brew gamesz/FPS mobile/FPS mobile build2.apk
+  playerPath: D:/home brew gamesz/FPS mobile/FPS mobile build2.2.0.apk

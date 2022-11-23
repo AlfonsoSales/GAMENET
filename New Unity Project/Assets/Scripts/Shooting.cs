@@ -25,7 +25,7 @@ public class Shooting : MonoBehaviourPunCallbacks
     private int score = 0;
    
     bool dead = false;
-    public GameObject deathLog = GameObject.Find("Death Log");
+    public GameObject deathLog;
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +76,7 @@ public class Shooting : MonoBehaviourPunCallbacks
             shooter = info.Sender.NickName;
             deadP = info.photonView.Owner.NickName;
             
-            Debug.Log(info.Sender.NickName + " killed" + info.photonView.Owner.NickName);
+            Debug.Log(shooter + " killed" + deadP);
             dead = true;
             DisplayDead();
         }
