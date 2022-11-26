@@ -43,6 +43,8 @@ MonoBehaviour:
   - CreateHitEffects
   - RegainHealth
   - DisplayDead
+  - Finish
+  - RPC_GetKill
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

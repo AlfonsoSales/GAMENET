@@ -350,6 +350,9 @@ MonoBehaviour:
   startHealth: 100
   healthBar: {fileID: 5255754371886901536}
   deathLog: {fileID: 0}
+  scoreBox: {fileID: 0}
+  TimerKick: 20
+  champion: {fileID: 0}
 --- !u!1 &282407167392786668
 GameObject:
   m_ObjectHideFlags: 0

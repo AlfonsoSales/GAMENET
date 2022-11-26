@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using Photon.Realtime;
+
+
 
 public class Shooting : MonoBehaviourPunCallbacks
 {
@@ -19,32 +22,66 @@ public class Shooting : MonoBehaviourPunCallbacks
     private string deadP;
     private string shooter;
 
+    
+
     private Animator animator;
 
-    GameObject scoreBox;
-    private int score = 0;
+    
    
     bool dead = false;
     public Text deathLog;
 
+    public Text scoreBox;
+    private int score = 0;
+
+    public float TimerKick = 20;
+
+    public Text champion;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        
         health = startHealth;
         healthBar.fillAmount = health / startHealth;
         animator = this.GetComponent<Animator>();
         deathLog = GameObject.Find("Death Log").GetComponent<Text>();
+        scoreBox = GameObject.Find("score").GetComponent<Text>();
+        champion = GameObject.Find("Champ").GetComponent<Text>();
+
         
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(score);
+        if (score >= 10)
+        {
+            champion.GetComponent<Text>().text = "You have won!";
+            photonView.RPC("Finish", RpcTarget.AllBuffered);
+
+            if (TimerKick > 0)
+            {
+                TimerKick -= Time.deltaTime;
+            }
+            else if (TimerKick <= 0)
+            {
+                PhotonNetwork.LeaveRoom();
+            }
+        }
+
+
+
     }
 
     public void Fire()
     {
+      
         RaycastHit hit;
         Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 
@@ -57,7 +94,14 @@ public class Shooting : MonoBehaviourPunCallbacks
             if (hit.collider.gameObject.CompareTag("Player") && !hit.collider.gameObject.GetComponent<PhotonView>().IsMine)
             {
                 hit.collider.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, 25);
+                if (hit.collider.gameObject.GetComponent<Shooting>().health == 0)
+                {
+                    GetKill();
+                }
             }
+
+            
+            
             
         }
     }
@@ -65,7 +109,7 @@ public class Shooting : MonoBehaviourPunCallbacks
     [PunRPC]
     public void TakeDamage(int damage, PhotonMessageInfo info)
     {
-        GameObject scoreBox = GameObject.Find("score");
+      
         this.health -= damage;
         this.healthBar.fillAmount = health / startHealth;
         
@@ -74,22 +118,21 @@ public class Shooting : MonoBehaviourPunCallbacks
         {
             Die();
             shooter = info.Sender.NickName;
-            deadP = info.photonView.Owner.NickName;
             
+            deadP = info.photonView.Owner.NickName;
+
+           
             
             dead = true;
             photonView.RPC("DisplayDead", RpcTarget.AllBuffered);
+  
         }
+
 
         if (photonView.IsMine && dead == true)
         {
             dead = false;
-            score = score + 1;
-            scoreBox.GetComponent<Text>().text = score.ToString(); //changed it to have player who died 10 times get kicked from room
-            if (score >= 10)
-            {
-                PhotonNetwork.LeaveRoom();
-            }
+            
         }
 
     }
@@ -109,6 +152,8 @@ public class Shooting : MonoBehaviourPunCallbacks
             StartCoroutine(RespawnCountdown());
         }
     }
+
+   
 
     IEnumerator RespawnCountdown()
     {
@@ -149,4 +194,24 @@ public class Shooting : MonoBehaviourPunCallbacks
         Debug.Log(shooter + " killed" + deadP);
         deathLog.GetComponent<Text>().text = shooter + " killed " + deadP;
     }
+
+    [PunRPC]
+    public void Finish()
+    {
+        transform.GetComponent<PlayerMovementController>().enabled = false;
+
+
+    }
+
+    public void GetKill()
+    {
+        score++;
+        scoreBox.GetComponent<Text>().text = score.ToString();
+    }
+
+    
+
+   
+
+
 }

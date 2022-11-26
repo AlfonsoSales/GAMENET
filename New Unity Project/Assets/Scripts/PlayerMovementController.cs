@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
+using Photon.Pun;
 
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviourPunCallbacks
 {
 
     public Joystick joystick;
@@ -13,17 +15,20 @@ public class PlayerMovementController : MonoBehaviour
 
     private Animator animator;
 
+   
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbodyFirstPersonController = this.GetComponent<RigidbodyFirstPersonController>();
         animator = this.GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     void FixedUpdate()
@@ -46,4 +51,6 @@ public class PlayerMovementController : MonoBehaviour
             rigidbodyFirstPersonController.movementSettings.ForwardSpeed = 5;
         }
     }
+
+   
 }

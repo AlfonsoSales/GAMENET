@@ -641,12 +641,12 @@ MonoBehaviour:
   showRoomListPanel: {fileID: 2010485768}
   insideRoomPanel: {fileID: 1760134789}
   roomInfoText: {fileID: 873426530}
-  playerListItemPrefab: {fileID: 1396198818}
-  playerListViewParent: {fileID: 0}
+  playerListItemPrefab: {fileID: 1252797748048109091, guid: 5dc44bfa7a0d258489acbcd2b912d338, type: 3}
+  playerListViewParent: {fileID: 1396198818}
   startGameButton: {fileID: 503160507}
   roomListPanel: {fileID: 2010485768}
-  roomItemPrefab: {fileID: 0}
-  roomListParent: {fileID: 0}
+  roomItemPrefab: {fileID: 841278376669109242, guid: 1b50ba566761f6c42bf8b3c775911a8d, type: 3}
+  roomListParent: {fileID: 505941761}
 --- !u!1 &237746955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,7 +1279,7 @@ RectTransform:
   m_Father: {fileID: 278505000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.00000011920929, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -3222,8 +3222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -597.60004}
-  m_SizeDelta: {x: 1320, y: 995.2001}
+  m_AnchoredPosition: {x: 960, y: -373.20474}
+  m_SizeDelta: {x: 1320, y: 546.4095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1103327248
 MonoBehaviour:
@@ -3684,8 +3684,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 367220499}
   m_HandleRect: {fileID: 367220498}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
