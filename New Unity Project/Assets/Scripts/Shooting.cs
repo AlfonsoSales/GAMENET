@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 
 
@@ -34,9 +35,10 @@ public class Shooting : MonoBehaviourPunCallbacks
     public Text scoreBox;
     private int score = 0;
 
-    public float TimerKick = 20;
+    public float TimerKick = 10;
 
     public Text champion;
+    bool winner = false;
 
 
 
@@ -63,19 +65,15 @@ public class Shooting : MonoBehaviourPunCallbacks
         if (score >= 10)
         {
             champion.GetComponent<Text>().text = "You have won!";
-            photonView.RPC("Finish", RpcTarget.AllBuffered);
+            winner = true;
 
-            if (TimerKick > 0)
-            {
-                TimerKick -= Time.deltaTime;
-            }
-            else if (TimerKick <= 0)
-            {
-                PhotonNetwork.LeaveRoom();
-            }
+            
         }
-
-
+        if (winner == true)
+        {
+            photonView.RPC("Finish", RpcTarget.AllBuffered);
+            winner = false;
+        }
 
     }
 
@@ -171,11 +169,20 @@ public class Shooting : MonoBehaviourPunCallbacks
 
         animator.SetBool("isDead", false);
         respawnText.GetComponent<Text>().text = "";
+        int randomPointX = 0;
+        int randomPointZ = 0;
+        if (photonView.ViewID % 2 == 0)
+        {
+            randomPointX = Random.Range(-20, 0);
+            randomPointZ = Random.Range(-20, 20);
+        }
 
-        int randomPointX = Random.Range(-20, 20);
-        int randomPointZ = Random.Range(-20, 20);
-
-        this.transform.position = new Vector3(randomPointX, 0, randomPointZ);
+        else if (photonView.ViewID % 2 != 0)
+        {
+            randomPointX = Random.Range(0, 20);
+            randomPointZ = Random.Range(-20, 20);
+        }
+            this.transform.position = new Vector3(randomPointX, 0, randomPointZ);
         transform.GetComponent<PlayerMovementController>().enabled = true;
 
         photonView.RPC("RegainHealth", RpcTarget.AllBuffered);
@@ -200,9 +207,25 @@ public class Shooting : MonoBehaviourPunCallbacks
     {
         transform.GetComponent<PlayerMovementController>().enabled = false;
 
-
+        if (TimerKick > 0)
+        {
+            TimerKick -= Time.deltaTime;
+        }
+        else if (TimerKick <= 0)
+        {
+            leaveRoom();
+        }
     }
 
+    IEnumerator leaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        while (PhotonNetwork.InRoom)
+        {
+            yield return null;
+        }
+            SceneManager.LoadScene("LobbyScene");
+    }
     public void GetKill()
     {
         score++;
