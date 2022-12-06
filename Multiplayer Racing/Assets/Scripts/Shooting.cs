@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Shooting : MonoBehaviour
+public class Shooting : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     Camera fpsCamera;
