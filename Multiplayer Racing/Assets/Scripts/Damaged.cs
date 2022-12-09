@@ -9,6 +9,10 @@ public class Damaged : MonoBehaviourPunCallbacks
     [SerializeField]
     Image healthbar;
 
+
+    [SerializeField]
+    Text dead;
+
     private float startHealth = 100;
     public float health;
     // Start is called before the first frame update
@@ -33,6 +37,6 @@ public class Damaged : MonoBehaviourPunCallbacks
 
     private void Die()
     {
-        
+        dead.text = "You have been eliminated";
     }
 }

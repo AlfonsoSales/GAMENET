@@ -264,7 +264,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCamera: {fileID: 5517890837621473345}
+  RayOrigin: {fileID: 0}
   fireRate: 0.1
+--- !u!114 &7173066404548064344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552935566379212121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cc75f3c8844874c8fd7473a2d431ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 7227840263882140987}
+  dead: {fileID: 0}
+  health: 0
 --- !u!1 &5407165062043836605
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +577,14 @@ PrefabInstance:
     - target: {fileID: 3018846127757361412, guid: 1ff58be37ed26b544b0fc61217af2634, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199123192452929403, guid: 1ff58be37ed26b544b0fc61217af2634, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199123192452929403, guid: 1ff58be37ed26b544b0fc61217af2634, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 4199123192452929403, guid: 1ff58be37ed26b544b0fc61217af2634, type: 3}
       propertyPath: m_LocalRotation.w

@@ -324,6 +324,7 @@
 "Assets/Scripts/PlayerSelection.cs"
 "Assets/Scripts/PlayerSetup.cs"
 "Assets/Scripts/RacingGameManager.cs"
+"Assets/Scripts/Shoot2.cs"
 "Assets/Scripts/Shooting.cs"
 "Assets/Scripts/VehicleMovement.cs"
 -langversion:8.0

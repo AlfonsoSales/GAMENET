@@ -7,7 +7,10 @@ public class Shoot2 : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     Camera fpsCamera;
+    [SerializeField]
+    GameObject RayOrigin;
 
+  
     [SerializeField]
     public float fireRate = 0.1f;
     private float fireTimer = 0;
